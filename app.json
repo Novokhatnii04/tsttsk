@@ -1,0 +1,21 @@
+{
+  "expo": {
+    "name": "TestNovokhatniiV",
+    "slug": "TestNovokhatniiV",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+   
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "rgba(255, 255, 255, 1)"
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    }
+  }
+}
