@@ -4,10 +4,11 @@ import { StyleSheet, Text } from "react-native";
 interface ITitle {
   children: ReactNode;
   modify?: string;
+  modifyStyles?: any;
 }
 
-const Title: FC<ITitle> = ({ children }) => {
-  return <Text style={styles.text}>{children}</Text>;
+const Title: FC<ITitle> = ({ children, modifyStyles }) => {
+  return <Text style={[styles.text, modifyStyles]}>{children}</Text>;
 };
 
 const styles = StyleSheet.create({
@@ -16,7 +17,7 @@ const styles = StyleSheet.create({
     lineHeight: 38,
     fontWeight: 600,
     color: "#14171D",
-    fontFamily: 'OutfitBold',
+    fontFamily: "OutfitBold",
   },
 });
 

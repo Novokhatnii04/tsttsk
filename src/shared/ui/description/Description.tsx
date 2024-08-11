@@ -4,10 +4,11 @@ import { StyleSheet, Text } from "react-native";
 interface IDescription {
   children: ReactNode;
   modify?: string;
+  modifyStyles?: any;
 }
 
-const Description: FC<IDescription> = ({ children }) => {
-  return <Text style={styles.text}>{children}</Text>;
+const Description: FC<IDescription> = ({ children, modifyStyles }) => {
+  return <Text style={[styles.text, modifyStyles]}>{children}</Text>;
 };
 
 const styles = StyleSheet.create({

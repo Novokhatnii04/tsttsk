@@ -1,15 +1,11 @@
 import { View, StyleSheet, ScrollView, Alert } from "react-native";
 
 import Button from "../../shared/ui/button/Button";
-import NameInput from "./ui/Inputs/NameInput";
-import EmailInput from "./ui/Inputs/EmailInput";
+import Inputs from "./Inputs/Inputs";
 
-import {
-  FieldErrors,
-  FieldValues,
-  SubmitHandler,
-  useForm,
-} from "react-hook-form";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import Title from "../../shared/ui/title/Title";
+import Description from "../../shared/ui/description/Description";
 
 const SignUpContent = ({ navigation }: any) => {
   const {
@@ -33,11 +29,20 @@ const SignUpContent = ({ navigation }: any) => {
         contentContainerStyle={styles.container}
         keyboardShouldPersistTaps="handled"
       >
-        <NameInput control={control} />
-        <EmailInput control={control} />
-        <View style={styles.buttonWrapper}>
-          <Button onPress={handleSubmit(submitHandler)}>Continue</Button>
+        <View style={styles.titles}>
+          <Title modifyStyles={{ fontSize: 24, lineHeight: 28 }}>
+            Welcome to App
+          </Title>
+          <Description
+            modifyStyles={{ fontSize: 16, color: "#667085", lineHeight: 22 }}
+          >
+            Please enter your details.
+          </Description>
         </View>
+        <Inputs control={control} />
+        <Button modifier="secondary" onPress={handleSubmit(submitHandler)}>
+          Continue
+        </Button>
       </ScrollView>
     </>
   );
@@ -45,14 +50,16 @@ const SignUpContent = ({ navigation }: any) => {
 
 const styles = StyleSheet.create({
   container: {
-    height: "80%",
+    flex: 1,
     gap: 16,
-  },
-  buttonWrapper: {
+    justifyContent: "center",
     paddingHorizontal: 16,
-    position: "absolute",
-    width: "100%",
-    bottom: 0,
+  },
+  titles: {
+    flexDirection: "column",
+    alignItems: "center",
+    gap: 8,
+    marginBottom: 40
   },
 });
 

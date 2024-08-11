@@ -1,7 +1,7 @@
 import React from "react";
 import { Control, FieldError, FieldErrors, FieldValues } from "react-hook-form";
 import { View, Text, StyleSheet } from "react-native";
-import CustomTextInput from "../../../../shared/ui/inputs/TextInput";
+import CustomInput from "../../../shared/ui/inputs/TextInput";
 
 interface ErrorsProps {
   control: Control<FieldValues>;
@@ -18,11 +18,17 @@ const Errors: React.FC<ErrorsProps> = ({ control }) => {
 
   return (
     <View style={styles.inputWrapper}>
-      <CustomTextInput
+      <CustomInput
         title="Name"
-        placeholder="Your name"
-        control={control}
+        placeholder="Enter name"
         rules={rules}
+        control={control}
+      />
+      <CustomInput
+        title="Last Name"
+        placeholder="Enter last name"
+        rules={rules}
+        control={control}
       />
     </View>
   );
@@ -31,7 +37,8 @@ const Errors: React.FC<ErrorsProps> = ({ control }) => {
 const styles = StyleSheet.create({
   inputWrapper: {
     height: "auto",
-    paddingHorizontal: 16,
+    flexDirection: "column",
+    gap: 20,
   },
 });
 

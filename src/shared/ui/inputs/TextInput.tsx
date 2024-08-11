@@ -50,7 +50,6 @@ const AuthTextInput: FC<IAuthInput> = ({
         )}
         rules={rules}
       />
-      
     </View>
   );
 };
@@ -60,23 +59,23 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   title: {
-    fontSize: 15,
-    fontWeight: "400",
-    marginBottom: 8,
-    color: "#606773",
-    lineHeight: 24,
-    marginLeft: 16,
+    fontSize: 12,
+    fontWeight: "500",
+    marginBottom: 6,
+    color: "#344054",
+    lineHeight: 16,
   },
   inputContainer: {
     flexDirection: "row",
     alignItems: "center",
+    position: "relative",
   },
   input: {
-    height: 56,
-    borderColor: "#CED5E0",
+    height: 40,
+    borderColor: "#D0D5DD",
     borderWidth: 1,
-    borderRadius: 16,
-    paddingHorizontal: 10,
+    borderRadius: 8,
+    paddingHorizontal: 14,
     flex: 1,
   },
   iconContainer: {
