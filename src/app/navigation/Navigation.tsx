@@ -4,11 +4,12 @@ import { createStackNavigator } from "@react-navigation/stack";
 import WelcomeScreen from "../../screens/welcome/WelcomeScreen";
 import SignUpScreen from "../../screens/signUp/SignUpContent";
 import SignInScreen from "../../screens/signIn/SignIn";
+import VerificationScreen from '../../screens/VerificationScreen/VerificationScreen'
 
 const Stack = createStackNavigator();
 
 const Navigation = () => {
-  const optionsForAuthHeader = {
+  const optionsForHeader = {
     headerLeft: () => null,
     headerTitle: "",
     headerTransparent: true,
@@ -25,12 +26,17 @@ const Navigation = () => {
         <Stack.Screen
           name="SignIn"
           component={SignInScreen}
-          options={optionsForAuthHeader}
+          options={optionsForHeader}
         />
         <Stack.Screen
           name="SignUp"
           component={SignUpScreen}
-          options={optionsForAuthHeader}
+          options={optionsForHeader}
+        />
+         <Stack.Screen
+          name="Verification"
+          component={VerificationScreen}
+          options={optionsForHeader}
         />
       </Stack.Navigator>
     </NavigationContainer>
