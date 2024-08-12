@@ -17,7 +17,6 @@ const styles = StyleSheet.create({
     lineHeight: 20,
     fontWeight: 600,
     color: "#00D1AC",
-    fontFamily: "OutfitBold",
     textDecorationLine: "underline",
   },
 });

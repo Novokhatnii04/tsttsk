@@ -5,9 +5,10 @@ interface IButton {
   onPress: () => void;
   children: ReactNode;
   modifier?: "primary" | "secondary";
+  modifyStyles?: any;
 }
 
-const Button: FC<IButton> = ({ onPress, children, modifier = "primary" }) => {
+const Button: FC<IButton> = ({ onPress, children, modifier = "primary", modifyStyles }) => {
   const buttonStyle =
     modifier === "primary" ? styles.primaryButton : styles.secondaryButton;
   const textStyle =
@@ -16,7 +17,7 @@ const Button: FC<IButton> = ({ onPress, children, modifier = "primary" }) => {
       : styles.secondaryButtonText;
 
   return (
-    <TouchableOpacity style={[styles.button, buttonStyle]} onPress={onPress}>
+    <TouchableOpacity style={[styles.button, buttonStyle, modifyStyles]} onPress={onPress}>
       <Text style={[styles.buttonText, textStyle]}>{children}</Text>
     </TouchableOpacity>
   );

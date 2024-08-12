@@ -1,9 +1,7 @@
-import { View, StyleSheet, Alert } from "react-native";
-
+import { View, StyleSheet } from "react-native";
 import Button from "../../shared/ui/button/Button";
 import Inputs from "./Inputs/Inputs";
-
-import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import { FieldValues, useForm } from "react-hook-form";
 import Title from "../../shared/ui/title/Title";
 import Description from "../../shared/ui/description/Description";
 import LinkText from "../../shared/ui/linkText/LinkText";

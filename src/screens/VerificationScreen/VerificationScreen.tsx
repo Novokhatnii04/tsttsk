@@ -1,32 +1,75 @@
 import { View, StyleSheet, Alert } from "react-native";
 import Title from "../../shared/ui/title/Title";
 import Description from "../../shared/ui/description/Description";
-import { useLayoutEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { getPinData } from "../../procceses/GetPinData";
 import VerificationInput from "../../shared/ui/inputs/VerificationInput";
+import LinkText from "../../shared/ui/linkText/LinkText";
+import Button from "../../shared/ui/button/Button";
+
+interface IAuthPin {
+  validateNumber: string;
+}
 
 const SignUpContent = ({ navigation }: any) => {
   const navigateHandler = (route: string) => navigation.navigate(route);
-  const [authPin, setAuthPin] = useState("");
+  const [authPin, setAuthPin] = useState<IAuthPin | string>("");
+  const [currentInputPin, setCurrentInputPin] = useState("");
 
-  // const submitHandler: SubmitHandler<FieldValues> = (data) => {
-  //   console.log(data);
-  //   Alert.alert("Succsess", "Welcome new user :)", [
-  //     {
-  //       text: "Okay",
-  //       style: "destructive",
-  //       onPress: () => navigateHandler("Welcome"),
-  //     },
-  //   ]);
-  // };
+  const getPinHandler = async () => {
+    const pinData = await getPinData(navigateHandler);
+    if (pinData) setAuthPin(JSON.parse(pinData));
+    console.log(pinData);
+  };
 
   useLayoutEffect(() => {
-    (async function () {
-      const pinData = await getPinData(navigateHandler);
-      console.log(pinData);
-      if (pinData) setAuthPin(pinData);
-    })();
+    getPinHandler();
   }, []);
+
+  useEffect(() => {
+    if (authPin && currentInputPin.length === 6) {
+      const { validateNumber }: any = authPin;
+      if (validateNumber === currentInputPin) {
+        successValidateHandler();
+      }
+    }
+  }, [currentInputPin, authPin]);
+
+  const successValidateHandler = () => {
+    const { validateNumber }: any = authPin;
+
+    if (validateNumber === currentInputPin) {
+      Alert.alert("Welcome new user :)", "You can do it again!", [
+        {
+          text: "Done",
+          style: "destructive",
+          onPress: navigateHandler("Welcome"),
+        },
+      ]);
+    } else {
+      Alert.alert(
+        "Incorrect Code",
+        "The code you entered is incorrect. Please try again.",
+        [
+          {
+            text: "Retry",
+            style: "destructive",
+          },
+        ]
+      );
+    }
+  };
+
+  const onChangeInputHandler = (code: string[]) => {
+    const InputPin = code.join("");
+    setCurrentInputPin(InputPin);
+  };
+
+  const buttonStyles = {
+    marginTop: 32,
+    opacity: currentInputPin.length === 6 ? 1 : 0.25,
+    pointerEvents: currentInputPin.length === 6 ? "auto" : "none",
+  };
 
   return (
     <View style={styles.container}>
@@ -38,8 +81,18 @@ const SignUpContent = ({ navigation }: any) => {
           Enter the confirmation code that will be sent to you by SMS
         </Description>
         <View style={styles.validateWrapper}>
-          <VerificationInput />
+          <VerificationInput onChangeInput={onChangeInputHandler} />
         </View>
+        <LinkText onPress={getPinHandler} modifyStyles={{ marginTop: 32 }}>
+          Resend the Code
+        </LinkText>
+        <Button
+          modifier="secondary"
+          modifyStyles={buttonStyles}
+          onPress={successValidateHandler}
+        >
+          Sign up
+        </Button>
       </View>
     </View>
   );
