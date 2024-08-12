@@ -1,21 +1,32 @@
 import { View, StyleSheet, Alert } from "react-native";
 import Title from "../../shared/ui/title/Title";
 import Description from "../../shared/ui/description/Description";
-import { FieldValues, SubmitHandler } from "react-hook-form";
+import { useLayoutEffect, useState } from "react";
+import { getPinData } from "../../procceses/GetPinData";
+import VerificationInput from "../../shared/ui/inputs/VerificationInput";
 
 const SignUpContent = ({ navigation }: any) => {
   const navigateHandler = (route: string) => navigation.navigate(route);
+  const [authPin, setAuthPin] = useState("");
 
-  const submitHandler: SubmitHandler<FieldValues> = (data) => {
-    console.log(data);
-    Alert.alert("Succsess", "Welcome new user :)", [
-      {
-        text: "Okay",
-        style: "destructive",
-        onPress: () => navigateHandler("Welcome"),
-      },
-    ]);
-  };
+  // const submitHandler: SubmitHandler<FieldValues> = (data) => {
+  //   console.log(data);
+  //   Alert.alert("Succsess", "Welcome new user :)", [
+  //     {
+  //       text: "Okay",
+  //       style: "destructive",
+  //       onPress: () => navigateHandler("Welcome"),
+  //     },
+  //   ]);
+  // };
+
+  useLayoutEffect(() => {
+    (async function () {
+      const pinData = await getPinData(navigateHandler);
+      console.log(pinData);
+      if (pinData) setAuthPin(pinData);
+    })();
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -26,6 +37,9 @@ const SignUpContent = ({ navigation }: any) => {
         <Description modify="smallGrey">
           Enter the confirmation code that will be sent to you by SMS
         </Description>
+        <View style={styles.validateWrapper}>
+          <VerificationInput />
+        </View>
       </View>
     </View>
   );
@@ -45,6 +59,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     gap: 8,
     marginBottom: 40,
+  },
+  validateWrapper: {
+    marginTop: 40,
   },
 });
 
