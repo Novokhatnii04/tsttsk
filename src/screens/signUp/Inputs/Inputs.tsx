@@ -3,7 +3,7 @@ import { Control, FieldValues } from "react-hook-form";
 import { View, StyleSheet } from "react-native";
 import CustomInput from "../../../shared/ui/inputs/TextInput";
 import NumberInput from "../../../shared/ui/inputs/NumberInput";
-import { rulesPhone, rulesNames } from "../../../resources/inputRules";
+import { rulesPhone, rulesNames } from "../../../app/resources/inputRules";
 
 interface ErrorsProps {
   control: Control<FieldValues>;

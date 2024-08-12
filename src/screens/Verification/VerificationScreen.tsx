@@ -2,7 +2,7 @@ import { View, StyleSheet, Alert } from "react-native";
 import Title from "../../shared/ui/title/Title";
 import Description from "../../shared/ui/description/Description";
 import { useEffect, useLayoutEffect, useState } from "react";
-import { getPinData } from "../../procceses/GetPinData";
+import { getPinData } from "../../app/procceses/GetPinData";
 import VerificationInput from "../../shared/ui/inputs/VerificationInput";
 import LinkText from "../../shared/ui/linkText/LinkText";
 import Button from "../../shared/ui/button/Button";

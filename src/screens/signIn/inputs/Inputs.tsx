@@ -2,7 +2,7 @@ import React from "react";
 import { Control, FieldValues } from "react-hook-form";
 import { View, StyleSheet } from "react-native";
 import NumberInput from "../../../shared/ui/inputs/NumberInput";
-import { rulesPhone } from "../../../resources/inputRules";
+import { rulesPhone } from "../../../app/resources/inputRules";
 
 interface InputsProps {
   control: Control<FieldValues>;
