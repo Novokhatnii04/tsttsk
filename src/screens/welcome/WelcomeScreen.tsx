@@ -1,8 +1,8 @@
 import React from "react";
-import { StyleSheet, SafeAreaView, View, Image } from "react-native";
+import { StyleSheet, SafeAreaView, View } from "react-native";
 import FadeInView from "../../widgets/FadeWrapper/FadeInView";
 import ButtonsWrapper from "./ui/ButtonsWrapper";
-import WelcomeImage from "../../../assets/images/welcomePage/WelcomeImage";
+import WelcomeImage from "../../../assets/images/welcome/WelcomeImage";
 import { StatusBar } from "expo-status-bar";
 import Title from "../../shared/ui/title/Title";
 import Description from "../../shared/ui/description/Description";
@@ -15,11 +15,11 @@ const WelcomeScreen = ({ navigation }: any) => {
         <View style={styles.innerContainer}>
           <WelcomeImage />
           <View style={styles.textInfo}>
-            <Title modify="">Welcome to App</Title>
-            <Description modify="">
+            <Title>Welcome to App</Title>
+            <Description>
               Lorem ipsum dolor sit amet consectetur. A ut pellentesque amet
               phasellus augue. Neque at felis pulvinar malesuada varius egestas
-              dis cras.{" "}
+              dis cras.
             </Description>
           </View>
           <ButtonsWrapper navigation={navigation} />

@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { Control, Controller, FieldValues } from "react-hook-form";
-import Warning from "../../../../assets/images/authBackground/Warning";
+import Warning from "../../../../assets/images/auth/Warning";
 
 interface IAuthInput {
   title: string;
