@@ -16,6 +16,16 @@ const SignUpContent = ({ navigation }: any) => {
   const [authPin, setAuthPin] = useState<IAuthPin | string>("");
   const [currentInputPin, setCurrentInputPin] = useState("");
 
+  const getNewCodeHandler = () => {
+    Alert.alert("A new code has been sent to your SMS", "You can see your code in (dev console)", [
+      {
+        text: "Done",
+        style: "destructive",
+      },
+    ]);
+    getPinHandler();
+  };
+
   const getPinHandler = async () => {
     const pinData = await getPinData(navigateHandler);
     if (pinData) setAuthPin(JSON.parse(pinData));
@@ -83,7 +93,7 @@ const SignUpContent = ({ navigation }: any) => {
         <View style={styles.validateWrapper}>
           <VerificationInput onChangeInput={onChangeInputHandler} />
         </View>
-        <LinkText onPress={getPinHandler} modifyStyles={{ marginTop: 32 }}>
+        <LinkText onPress={getNewCodeHandler} modifyStyles={{ marginTop: 32 }}>
           Resend the Code
         </LinkText>
         <Button
