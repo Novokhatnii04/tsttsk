@@ -45,10 +45,6 @@ const styles = StyleSheet.create({
     width: "100%",
     gap: 32,
   },
-  image: {
-    width: 440,
-    height: 330,
-  },
   textInfo: {
     width: "80%",
     flexDirection: "column",

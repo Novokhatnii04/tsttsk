@@ -1,7 +1,7 @@
 export const rulesPhone = {
   required: {
     value: true,
-    message: "Phone is required",
+    message: "Mobile number is required",
   },
   minLength: 6,
 };
